@@ -33,6 +33,11 @@ public class OneToOneMain {
 
 			// save the instructor object and associated object(InstructorDetail) coz of cascade operation.
 			session.save(instructor);
+			System.out.println("object is saved " + instructor.getId());
+			
+			Instructor removeInstructor= session.get(Instructor.class, instructor.getId());
+			session.delete(removeInstructor);
+			System.out.println("deleted " + removeInstructor.getId());
 
 			// commit transaction
 			session.getTransaction().commit();
